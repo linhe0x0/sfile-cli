@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const pkg = require('../package.json')
+const search = require('../lib/search')
+const quickSearch = require('../lib/quick-search')
+const get = require('../lib/get')
+const info = require('../lib/info')
+
+program
+  .version(pkg.version)
+  .usage('[options] [command] <keyword>')
+  .option('-s, --ssl', 'output HTTPS link')
+  .action(quickSearch)
+
+program
+  .command('search <keyword>')
+  .description('search packages with keyword.')
+  .action(search)
+
+program
+  .command('get <pkg>')
+  .description('get specific package with package name.')
+  .action(get)
+
+program
+  .command('info <pkg>')
+  .description('get specific package info with package name.')
+  .action(info)
+
+program.on('--help', function () {
+  console.log('  Examples:')
+  console.log('')
+  console.log('    $ sfile react')
+  console.log('    $ sfile search react')
+  console.log('    $ sfile get react')
+  console.log('    $ sfile get react@15.4.0')
+  console.log('    $ sfile get -s react')
+  console.log('    $ sfile info react')
+})
+
+if (!process.argv.slice(2).length) {
+  program.help()
+}
+
+program.parse(process.argv)
