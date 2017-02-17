@@ -1,0 +1,23 @@
+{
+  "name": "sfile-cli",
+  "version": "0.1.0",
+  "description": "The static library search and cli for staticfile.org.",
+  "preferGlobal": true,
+  "bin": {
+    "sfile": "bin/sfile"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sqrtthree <imsqrtthree@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "inquirer": "^3.0.1",
+    "lodash": "^4.17.4",
+    "ora": "^1.1.0",
+    "request": "^2.79.0"
+  }
+}
