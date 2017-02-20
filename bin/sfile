@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander')
+const updateNotifier = require('update-notifier')
 const pkg = require('../package.json')
 const search = require('../lib/search')
 const quickSearch = require('../lib/quick-search')
@@ -44,3 +45,5 @@ if (!process.argv.slice(2).length) {
 }
 
 program.parse(process.argv)
+
+updateNotifier({pkg}).notify()
