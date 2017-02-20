@@ -20,5 +20,17 @@
     "ora": "^1.1.0",
     "request": "^2.79.0",
     "update-notifier": "^2.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sqrthree/sfile-cli.git"
+  },
+  "keywords": [
+    "staticfile"
+  ],
+  "bugs": {
+    "url": "https://github.com/sqrthree/sfile-cli/issues"
+  },
+  "homepage": "https://github.com/sqrthree/sfile-cli#readme"
 }
