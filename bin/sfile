@@ -8,27 +8,59 @@ const quickSearch = require('../lib/quick-search')
 const get = require('../lib/get')
 const info = require('../lib/info')
 
+/**
+ * 设置主命令参数
+ *
+ * eg.
+ *   sfile react
+ *   sfile -s react
+ */
 program
   .version(pkg.version)
   .usage('[options] [command] <keyword>')
   .option('-s, --ssl', 'output HTTPS link')
   .action(quickSearch)
 
+/**
+ * 设置子命令 search
+ * @description 根据指定的关键词搜索相关 package。
+ *
+ * eg.
+ *   sfile search react
+ */
 program
   .command('search <keyword>')
   .description('search packages with keyword.')
   .action(search)
 
+/**
+ * 设置子命令 get
+ * @description 根据指定的 package 名获取相对于的链接。
+ *
+ * eg.
+ *   sfile get react.
+ */
 program
   .command('get <pkg>')
   .description('get specific package with package name.')
   .action(get)
 
+
+/**
+ * 设置子命令 info
+ * @description 获取指定 package 的包信息。
+ *
+ * eg.
+ *   sfile info react
+ */
 program
   .command('info <pkg>')
   .description('get specific package info with package name.')
   .action(info)
 
+/**
+ * 输出自定义帮助信息
+ */
 program.on('--help', function () {
   console.log('  Examples:')
   console.log('')
@@ -40,10 +72,16 @@ program.on('--help', function () {
   console.log('    $ sfile info react')
 })
 
+/**
+ * 如果调用命令时不带任何参数，则默认输出帮助信息。
+ */
 if (!process.argv.slice(2).length) {
   program.help()
 }
 
 program.parse(process.argv)
 
+/**
+ * 设置程序版本检测，过期时自动提示。
+ */
 updateNotifier({pkg}).notify()
